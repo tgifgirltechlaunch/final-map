@@ -1,5 +1,5 @@
 
-    <!-- Footer Carousel -->
+    <!-- Footer -->
     <footer id="sticky" class="footer">
         <div class="container-fluid">
             <div id="copyright">&copy&nbspLazara Michelle, Techlaunch Student - 2018</div>

@@ -15,12 +15,15 @@ class Home
         // get info for the view
         $records1 = $record1Model->getUsers();
 
+        //get total records number
         $qty = $record1Model->getCount();
 
-        //get info for the view
+        //send message
         $msg = "Welcome";
 
+        //set page title
         $title = "Home";
+
         // include the view
         include "view/home.php";
     } 
@@ -38,14 +41,14 @@ class Home
         $state = $_POST['state'];
         $zip = $_POST['zip'];
 
-        // create new Stamp
+        // create new User, capitalizing first name and last name
         $user = new User(ucfirst ($fname), ucfirst ($lname), $phone, $address, $city, $state, $zip);
         
-        // save the stamp
+        // save the User
         $record2Model = new Records();
         $record2Model->addUser($user); 
         
-        // redirect to the list of stamps
+        // redirect to the map with new marker
         header('Location: index.php?page=map');
     }
 }

@@ -3,12 +3,11 @@
 class Rolodex {
     public static $list = [];
     public static $welcome = "Hello";
-    public static $total = "24";
+    public static $total = "";
 
     public static function run() {
-  
 
-        // User Info
+        // collectionof user objects
         foreach(Rolodex::$list as $l) {
             $l->fname;
             $l->lname;

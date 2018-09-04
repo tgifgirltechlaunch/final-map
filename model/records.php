@@ -5,21 +5,21 @@ include_once "classes/User.php";
 class Records 
 {
     /**
-     * Get the list of stamps 
+     * Get the list of uses 
      */
     public function getUsers() {
         global $db;
 
-        //get all collection table records
+        //get all user table records
         $res = $db->query("SELECT * FROM users");
 
-        // translating from generic object to a Stamp object
+        // translating from generic object to a User object
         $users = [];
         foreach($res as $r) {
             $users[] = new User($r->fname, $r->lname, $r->phone, $r->address, $r->city, $r->state, $r->zip);
         }
 
-        //return stamps array
+        //return users array
         return $users;
     }
 
@@ -30,6 +30,7 @@ class Records
     public function addUser($user) {
         global $db;
         
+        //check if address is already on file
         $temp = $this->findUser($user->address, $user->city, $user->state, $user->zip);
 
         if($temp < 1){
@@ -55,7 +56,7 @@ class Records
     }
 
     /**
-     * Find Stamp and Return ID and Quantity
+     * Search if User exists
      */
     public function findUser($address, $city, $state, $zip) {
         global $db;

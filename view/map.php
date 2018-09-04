@@ -44,6 +44,7 @@
 
         var marker, i;
 
+        //create markers using locations array and make label show numbers on markers
         for (i = 0; i < locations.length; i++) {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -51,12 +52,15 @@
                 label: ""+(i+1),
             });
 
+            //show info on hover
             google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
                 return function () {
                     infowindow.setContent(locations[i][0]);
                     infowindow.open(map, marker);
                 }
             })(marker, i));
+
+            //do not show when not hovered
             google.maps.event.addListener(marker, 'mouseout', (function (marker, i) {
                 return function () {
                     infowindow.setContent(locations[i][0]);
@@ -71,6 +75,5 @@
     <!-- Include Footer -->
     <?php include "partials/footer.php"; ?>
 
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYb6Id4RgmJUwcoP6F4XAWsgB07xMN4DQ&callback=initMap"></script>
   
