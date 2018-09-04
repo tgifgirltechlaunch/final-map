@@ -1,0 +1,15 @@
+{
+    "name": "lazara/final",
+    "description": "User Maps",
+    "type": "project",
+    "license": "v1",
+    "authors": [
+        {
+            "name": "lmichelletech",
+            "email": "lmichelle@techlaunch.io"
+        }
+    ],
+    "require": {
+        "jstayton/google-maps-geocoder": "*"
+    }
+}
