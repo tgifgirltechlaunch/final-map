@@ -41,7 +41,7 @@
         locations = <?php echo json_encode($coords); ?>;
         
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 6,
+            zoom: 10,
             center: new google.maps.LatLng(<?= json_encode($coords[0][1]); ?>, <?= json_encode($coords[0][2]); ?>),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });

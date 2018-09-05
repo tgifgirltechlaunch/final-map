@@ -5,9 +5,7 @@
     <main role="main" class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h1><?= $msg; ?></h1>
-                <h4>Stay Connected</h4>
-                <p>number of people in our map: <?= $qty; ?></p>
+                <div><h3 class="welcome"><?= $msg; ?></h3><h2 class="largeHeadline">Stay Connected</h2><p class="smallHeadline">number of people in our map: <?= $qty; ?></p></div>
 
                 <!-- Add User Form -->
                 <form id="usrForm" action="index.php?page=home&action=submit" method="post">
@@ -99,9 +97,9 @@
                     </div>
                 </div>
                 
-                <div class="row">
-                        <div class="col"><input class="btn btn-secondary" type="submit" value="Map People"/></div>
-                </div> 
+               
+                <div class="col"><input class="btn btn-secondary" type="submit" value="Map People"/></div>
+                
                 </form>
             </div>
         </div>
