@@ -2,24 +2,30 @@
 <?php include "partials/header.php"; ?>
 
     <!-- Begin page content -->
-    <main role="main" class="container">
-        <div class="row">
+    <main role="main">
             <div class="col-sm-12">
                 <!-- Map Info -->
-                <h1><?= $welcome; ?></h1>
-                <?php if(isset($fullAddress)){ ?><span> You entered: </span><?= $fullAddress; }else{ ?><span>No Data</span> <?php } ?></p>
-                <div style="overflow-y: scroll; height:100px; margin-bottom: 40px;">
-                    <div id="userInfo">
-                        <ul class="directory">
-                            <?php if(!empty($rolo)){ $index = 1; foreach($rolo as $l) { ?>
-                            <li><span class="bold">#<?= $index++?></span> <?=" " . $l->fname . " " . $l->lname . " " ?><i class="fas fa-map-pin"></i>  <?= $l->address ?></li>
-                            <?php } } ?>
-                        </ul>
+                <!-- <?php if(isset($fullAddress)){ ?><h1><?= $welcome; ?></h1><p><span> You entered: </span><?= $fullAddress; }?></p> -->
+                <?php if(!empty($rolo)){ ?>                  
+                    
+                    <div id="mapWrapper">
+                        <div id="map"></div>
+                        <div id="msg"><?= $msg; ?><span id="msgClose"><i class="fas fa-times-circle"></i></span></div>
+                        <div id="over_map" onclick="openNav()">Directory</div>
+                        <div id="mySidenav" class="sidenav">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            <div id="userInfo">
+                                <ul class="sideList">
+                                    <?php $index = 1; foreach($rolo as $l) { ?>
+                                    <li><span class="bold">#<?= $index++?></span> <?=" " . $l->fname . " " . $l->lname . " " ?><i class="fas fa-map-pin"></i>  <?= $l->address ?></li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div id="mapWrapper"><div id="map"></div></div>
+                <?php } else { ?><div class="nodata"></div><?php } ?>
             </div>
-        </div>
+       
     </main>
 
     <!-- Footer -->
@@ -69,8 +75,32 @@
             })(marker, i));
         }
     }
+    </script>
+    <script>
+        /* open and close sidebar directory */
+function openNav() {
+    var a = document.getElementById('mySidenav').offsetWidth;
 
-    
+    /* if open, close it, else Set the width of the side navigation to 250px */
+    if(a > 0){closeNav();}
+    else{
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+}
+
+/* to close, set the width of the side navigation to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+// close message box
+window.onload = function(){
+    document.getElementById('msgClose').onclick = function(){
+        this.parentNode.parentNode
+        .removeChild(this.parentNode);
+        return false;
+    };
+};
     </script>
     <!-- Include Footer -->
     <?php include "partials/footer.php"; ?>

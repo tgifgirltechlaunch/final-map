@@ -3,10 +3,11 @@ html {
     min-height: 100%;
 }
 body {
-    padding: 20px;
+    margin-bottom: 60px; /* Margin bottom by footer height */
     font-size: 14px;
 }
 .container {
     width: auto;
     padding: 80px 15px;
 }
+

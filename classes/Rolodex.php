@@ -3,11 +3,13 @@
 class Rolodex {
     public static $list = [];
     public static $welcome = "Hello";
+
+    //set later in map controller
     public static $total = "";
 
     public static function run() {
 
-        // collectionof user objects
+        // collection of user objects
         foreach(Rolodex::$list as $l) {
             $l->fname;
             $l->lname;

@@ -30,16 +30,10 @@ class Records
     public function addUser($user) {
         global $db;
         
-        //check if address is already on file
-        $temp = $this->findUser($user->address, $user->city, $user->state, $user->zip);
-
-        if($temp < 1){
-
-            //if we don't already have that user on file, go ahead and add to the database
-            $db->query("
-            INSERT INTO users (fname, lname, phone, address, city, state, zip) 
-            VALUES ('$user->fname', '$user->lname', '$user->phone', '$user->address', '$user->city', '$user->state', '$user->zip')");
-        }
+        //insert into db
+        $db->query("
+        INSERT INTO users (fname, lname, phone, address, city, state, zip) 
+        VALUES ('$user->fname', '$user->lname', '$user->phone', '$user->address', '$user->city', '$user->state', '$user->zip')");  
     }
 
     /**

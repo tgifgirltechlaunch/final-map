@@ -1,6 +1,6 @@
 <!-- Include Header -->
 <?php include "partials/header.php"; ?>
-
+<?php $homepage = str_replace('.php', '', basename($_SERVER['PHP_SELF'])); ?>
     <!-- Begin page content -->
     <main role="main" class="container">
         <div class="row">
