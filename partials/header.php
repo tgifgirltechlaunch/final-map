@@ -34,7 +34,6 @@ $action = isset($_GET['action']) ? $_GET['action'] : "index"; ?>
     #mapWrapper{
         height:100%;
     }
-    
     </style>
 </head>
 <body>

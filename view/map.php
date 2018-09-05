@@ -38,7 +38,8 @@
    
     function initMap() {
 
-        locations = <?php echo json_encode($coords); ?>;
+        locations = <?= json_encode($coords); ?>;
+        
         
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,
@@ -105,5 +106,5 @@ window.onload = function(){
     <!-- Include Footer -->
     <?php include "partials/footer.php"; ?>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYb6Id4RgmJUwcoP6F4XAWsgB07xMN4DQ&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7dWZZA7rqXxvWZLgpBnhh4JXg5i-momQ&callback=initMap"></script>
   
