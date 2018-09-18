@@ -25,86 +25,73 @@
                     </div>
                 <?php } else { ?><div class="nodata"></div><?php } ?>
             </div>
-       
     </main>
-
-    <!-- Footer -->
-    <footer id="sticky" class="footer">
-        <div class="container-fluid">
-            <div id="copyright">&copy&nbspLazara Michelle, Techlaunch Student - 2018</div>
-        </div>
-    </footer>
     <script>
-   
-    function initMap() {
-
-        locations = <?= json_encode($coords); ?>;
-        
-        
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 10,
-            center: new google.maps.LatLng(<?= json_encode($coords[0][1]); ?>, <?= json_encode($coords[0][2]); ?>),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-
-        var infowindow = new google.maps.InfoWindow({});
-
-        var marker, i;
-
-        //create markers using locations array and make label show numbers on markers
-        for (i = 0; i < locations.length; i++) {
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                map: map,
-                label: ""+(i+1),
+        function initMap() {
+            locations = <?= json_encode($coords); ?>;
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: new google.maps.LatLng(<?= json_encode($coords[0][1]); ?>, <?= json_encode($coords[0][2]); ?>),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
-            //show info on hover
-            google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
-                return function () {
-                    infowindow.setContent(locations[i][0]);
-                    infowindow.open(map, marker);
-                }
-            })(marker, i));
+            var infowindow = new google.maps.InfoWindow({});
+            var marker, i;
 
-            //do not show when not hovered
-            google.maps.event.addListener(marker, 'mouseout', (function (marker, i) {
-                return function () {
-                    infowindow.setContent(locations[i][0]);
-                    infowindow.close(map, marker);
-                }
-            })(marker, i));
+            //create markers using locations array and make label show numbers on markers
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map,
+                    label: ""+(i+1),
+                });
+
+                //show info on hover
+                google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(locations[i][0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+
+                //do not show when not hovered
+                google.maps.event.addListener(marker, 'mouseout', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(locations[i][0]);
+                        infowindow.close(map, marker);
+                    }
+                })(marker, i));
+            }
         }
-    }
     </script>
     <script>
         /* open and close sidebar directory */
-function openNav() {
-    var a = document.getElementById('mySidenav').offsetWidth;
+        function openNav() {
+            var a = document.getElementById('mySidenav').offsetWidth;
 
-    /* if open, close it, else Set the width of the side navigation to 250px */
-    if(a > 0){closeNav();}
-    else{
-        document.getElementById("mySidenav").style.width = "250px";
-    }
-}
+            /* if open, close it, else Set the width of the side navigation to 250px */
+            if(a > 0){closeNav();}
+            else{
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+        }
 
-/* to close, set the width of the side navigation to 0 */
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
+        /* to close, set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
 
-// close message box
-window.onload = function(){
-    document.getElementById('msgClose').onclick = function(){
-        this.parentNode.parentNode
-        .removeChild(this.parentNode);
-        return false;
-    };
-};
+        // close message box
+        window.onload = function(){
+            document.getElementById('msgClose').onclick = function(){
+                this.parentNode.parentNode
+                .removeChild(this.parentNode);
+                return false;
+            };
+        };
     </script>
     <!-- Include Footer -->
     <?php include "partials/footer.php"; ?>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7dWZZA7rqXxvWZLgpBnhh4JXg5i-momQ&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALFO4XfPa8n3CZQFSHm0mroAxDYZ1frxM&callback=initMap"></script>
   

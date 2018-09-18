@@ -26,9 +26,11 @@ class Map
         //create markers array and page variables
         for($i = 0; $i < $quantity; $i++){        
             $fullAddress = $rolo[$i]->address . " " . $rolo[$i]->city . ", " . $rolo[$i]->state . " " . $rolo[$i]->zip;
-            $fullName = $rolo[$i]->fname  . " " . $rolo[$i]->lname . "</br>" . $rolo[$i]->phone;
+            $fullName = $rolo[$i]->fname  . " " . $rolo[$i]->lname . "</br>" . $rolo[$i]->phone. "</br>" . $rolo[$i]->address;
             $addCoord = $myAddress->coordinates($fullAddress);
-
+            // print_r($addCoord['response']);
+            // exit;
+            
             if($addCoord['meta']['status']===200){
                 $coords[]=([$fullName, $addCoord['response']['lat'], $addCoord['response']['lng'], $i]); 
             }
@@ -57,11 +59,15 @@ class Map
     public function coordinates($address) {
         //get lat and long from user address
         $Geocoder = new GoogleMapsGeocoder($address);
+        $Geocoder->setApiKey("AIzaSyALFO4XfPa8n3CZQFSHm0mroAxDYZ1frxM");
         $response = $Geocoder->geocode();
-        
-        if (isset($response) && is_array($response)) {
+        // print_r($response);
+        // exit;
+        if ($response > 0 && is_array($response)) {
             
-            $latLong = $response['results'][0]['geometry']['location'];
+            $latLong = isset($response['results'][0]['geometry']['location']) ? $response['results'][0]['geometry']['location'] : "";
+            // print_r($latLong);
+            // exit;
             $meta = array(
                 "status"=>200,
                 "message"=>"Succeed."

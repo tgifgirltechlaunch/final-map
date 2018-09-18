@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="phone">Phone</label>
-                        <input id="phone" class="form-control" name="phone" placeholder="Phone: xxx-xxx-xxxx" type="tel" pattern="^\d{3}-\d{3}-\d{4}$" required />
+                        <input id="phone" class="form-control" name="phone" placeholder="Phone: xxx-xxx-xxxx" type="tel" required />
                     </div>
                 </div>
                 <div class="form-row">
